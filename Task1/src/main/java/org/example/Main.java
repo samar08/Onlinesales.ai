@@ -1,4 +1,4 @@
-package Task1.src.main.java.org.example;
+package org.example;
 /*
  * 
  * 
