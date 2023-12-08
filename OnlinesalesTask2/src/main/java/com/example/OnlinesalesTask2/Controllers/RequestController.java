@@ -38,12 +38,18 @@ public class RequestController {
         String encodedExpression;
 
         this.requestService=requestService;
+        /*
+         * Fixed data which is used for creating 500 size dataset by concatenating to a list
+         */
         this.data=new String[]{"1+1","2*2+4*5+5*6-9*10+11*11","sqrt(3*3+5*5)","sqrt(121)","21^5","100^2 + 21^2 + 24^4","1/0","sqrt(1*1+2*2+3^4+5^2+81^4)","4*6+9+10*7", "4^3+11^5"};
         this.expressions=new ArrayList<>();
         this.encodedData=new ArrayList<>();
         this.dataSize=data.length;
         this.encodedToData = new HashMap<>();
         for(i=0;i<dataSize;i++) {
+            /*
+             * encoding every expression to pass to the API
+             */
             encodedExpression = URLEncoder.encode(data[i], StandardCharsets.UTF_8);
             encodedData.add(encodedExpression);
             encodedToData.put(encodedExpression, data[i]);
