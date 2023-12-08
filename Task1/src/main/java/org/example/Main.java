@@ -6,21 +6,7 @@ package org.example;
 import java.util.*;
 import java.lang.*;
 public class Main{
-//    static HashMap<Integer, Double> map;
-//    static Double percentageTotal;
-//    public Main(){
-//        this.map=new HashMap<>();
-//        map.put(1,10.0);
-//        map.put(2,20.0);
-//        map.put(3,25.0);
-//        map.put(4,45.0);
-//        map.put(5,0.0);
-//        this.percentageTotal=100.0;
-//    }
-//    public Main(HashMap<Integer,Double> map, Double percentageTotal){
-//        this.map=map;
-//        this.percentageTotal=percentageTotal;
-//    }
+
     public static boolean checkProbabilitySumOfInput(HashMap<Integer, Double> map,Double percentageTotal){
         boolean flag=false;
         Set<Integer> keys=map.keySet();
@@ -48,33 +34,18 @@ public class Main{
         }
        return 1;
     }
-   public static void main(String[] args)
+   public static HashMap<Integer,Integer> getResultMap(HashMap<Integer, Double> map, int occurrences,Double percentageTotal)
     {
-        /*
-         * considering the input [{1,10.0},{2,20.0},{3,25.0},{4,45.0},{5,0.0}]
-         * and percentageTotal=100.0
-         */
-        HashMap<Integer,Double>map=new HashMap<>();
-        map.put(1,10.0);
-        map.put(2,20.0);
-        map.put(3,25.0);
-        map.put(4,45.0);
-        map.put(5,0.0);
-        Double percentageTotal=100.0;
-        
-        
-        if(checkProbabilitySumOfInput(map,percentageTotal)!=true){
-            System.out.println("The total sum of probabilities in input "+ map.toString()+" should be "+percentageTotal +" !!");
-        }
-        else{
-            int i=0, newArraySize=0,occurrences=0,size=0,total=0,outputOfOccurrence;
+        HashMap<Integer,Integer> resultmap=new HashMap<>();
+
+            int i=0, newArraySize=0,size=0,total=0,outputOfOccurrence;
             Scanner sc=new Scanner(System.in);
             Set<Map.Entry<Integer,Double>> entrySet=map.entrySet();
             size=entrySet.size();
             Set<Integer> keySet=map.keySet();
             Iterator it=keySet.iterator();
             HashMap<Double,Integer> outputmap=new HashMap<>();
-            HashMap<Integer,Integer> resultmap=new HashMap<>();
+
             double[] arr=new double[size];
             ArrayList<Double>newArray=new ArrayList<>();
             
@@ -95,8 +66,8 @@ public class Main{
             }
             
             newArraySize=newArray.size();
-            System.out.println("Enter number of occurrences");
-            occurrences=sc.nextInt();
+
+
             total=occurrences;
             while(occurrences>0){
                     outputOfOccurrence=toss(map,newArray,newArraySize,outputmap,percentageTotal);
@@ -110,12 +81,42 @@ public class Main{
                     resultmap.put(key,0);
                 }
             }
-                System.out.println("Number of occurrences of each key: "+ resultmap.toString());
-                System.out.println("Total trials: "+total);
-            }
-           
+
+
+        return resultmap;
         }
-       
+       public static void main(String[] args){
+           /*
+            * considering the input [{1,10.0},{2,20.0},{3,25.0},{4,45.0},{5,0.0}]
+            * and percentageTotal=100.0
+            */
+           Scanner sc=new Scanner(System.in);
+           HashMap<Integer,Double>map=new HashMap<>();
+           map.put(1,10.0);
+           map.put(2,20.0);
+           map.put(3,25.0);
+           map.put(4,45.0);
+           map.put(5,0.0);
+           Double percentageTotal=100.0;
+           HashMap<Integer,Integer> resultmap=new HashMap<>();
+            int occurrences=0;
+           if(checkProbabilitySumOfInput(map,percentageTotal)!=true){
+               System.out.println("The total sum of probabilities in input "+ map.toString()+" should be "+percentageTotal +" !!");
+           }
+           else{
+               if(args.length>0){
+                   occurrences=Integer.parseInt(args[0]);
+               }
+               else{
+                   System.out.println("Enter number of occurrences");
+                   occurrences=sc.nextInt();
+               }
+
+               resultmap=getResultMap(map,occurrences,percentageTotal);
+           }
+           System.out.println("Number of occurrences of each key: "+ resultmap.toString());
+           System.out.println("Total tosses: "+occurrences);
+       }
 
     } 
 
