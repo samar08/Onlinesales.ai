@@ -1,12 +1,18 @@
 package org.example;
 /*
- * 
+ * the logic i have used for getting the probability is that from the percentageTotal I will give a fixed range for each key based on its weightage
+ * for example if our map is {1:70,2:30}, then I will give a range of (0,69) to 1 and (70 to 99) to 2
+ * then I will toss-> and toss output can be any number between 0 and (percentageTotal)*(Math.random())
+ * and return the key whose range intersects with the output from toss 
  * 
  */
 import java.util.*;
 import java.lang.*;
 public class Main{
 
+    /*
+     * check the total probability of all keys
+     */
     public static boolean checkProbabilitySumOfInput(HashMap<Integer, Double> map,Double percentageTotal){
         boolean flag=false;
         Set<Integer> keys=map.keySet();
@@ -23,6 +29,9 @@ public class Main{
       
         return flag;
     }
+    /*
+     * toss function which will return the biased output
+     */
     public static int toss(HashMap<Integer, Double> map,ArrayList<Double> newArray, int newArraySize,HashMap<Double, Integer> outputmap, Double percentageTotal){
         int i;
         double random=Math.random()*percentageTotal;
@@ -34,6 +43,9 @@ public class Main{
         }
        return 1;
     }
+    /*
+     * get the final resultMap after all the occurrences
+     */
    public static HashMap<Integer,Integer> getResultMap(HashMap<Integer, Double> map, int occurrences,Double percentageTotal)
     {
         HashMap<Integer,Integer> resultmap=new HashMap<>();
@@ -85,6 +97,9 @@ public class Main{
 
         return resultmap;
         }
+        /*
+         * main method
+         */
        public static void main(String[] args){
            /*
             * considering the input [{1,10.0},{2,20.0},{3,25.0},{4,45.0},{5,0.0}]

@@ -6,6 +6,16 @@ i)in the second elif I have made it <=20, covering n==20 as the third else is fo
 ii) in the third else the out should be out+lim and if n>20 the returned output is not integer, I have added int(out/2) to type convert that to int.
 '''
 
+'''
+edge cases covered:
+i)
+for n>20 -> let n=25, output is  (25-20)*(25-20+1)/2 => 15
+ii)
+and if (n>10 and n<=20)
+the output should be 1*(2)*(3)*....(n-10)
+so if n=15 the output is 5*4*3*2*1 => 120
+'''
+
 def compute(n):
     if n < 10:
         out = n ** 2
