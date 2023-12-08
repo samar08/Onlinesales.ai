@@ -6,6 +6,21 @@ package org.example;
 import java.util.*;
 import java.lang.*;
 public class Main{
+//    static HashMap<Integer, Double> map;
+//    static Double percentageTotal;
+//    public Main(){
+//        this.map=new HashMap<>();
+//        map.put(1,10.0);
+//        map.put(2,20.0);
+//        map.put(3,25.0);
+//        map.put(4,45.0);
+//        map.put(5,0.0);
+//        this.percentageTotal=100.0;
+//    }
+//    public Main(HashMap<Integer,Double> map, Double percentageTotal){
+//        this.map=map;
+//        this.percentageTotal=percentageTotal;
+//    }
     public static boolean checkProbabilitySumOfInput(HashMap<Integer, Double> map,Double percentageTotal){
         boolean flag=false;
         Set<Integer> keys=map.keySet();
@@ -88,6 +103,13 @@ public class Main{
                     resultmap.put(outputOfOccurrence,resultmap.getOrDefault(outputOfOccurrence,0)+1);
                     occurrences--;
                 }
+            it= keySet.iterator();
+            while(it.hasNext()){
+                Integer key=(Integer)it.next();
+                if(resultmap.containsKey(key)!=true){
+                    resultmap.put(key,0);
+                }
+            }
                 System.out.println("Number of occurrences of each key: "+ resultmap.toString());
                 System.out.println("Total trials: "+total);
             }
