@@ -38,7 +38,7 @@ public class RequestController {
         String encodedExpression;
 
         this.requestService=requestService;
-        this.data=new String[]{"(1+1)","2*2+4*5+5*6-9*10+11*11","sqrt(3*3+5*5)","sqrt(121)","21^5","100^2 + 21^2 + 24^4","1/0","sqrt(1*1+2*2+3^4+5^2+81^4)","4*6+9+10*7", "4^3+11^5"};
+        this.data=new String[]{"1+1","2*2+4*5+5*6-9*10+11*11","sqrt(3*3+5*5)","sqrt(121)","21^5","100^2 + 21^2 + 24^4","1/0","sqrt(1*1+2*2+3^4+5^2+81^4)","4*6+9+10*7", "4^3+11^5"};
         this.expressions=new ArrayList<>();
         this.encodedData=new ArrayList<>();
         this.dataSize=data.length;

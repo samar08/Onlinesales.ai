@@ -37,8 +37,8 @@ class OnlinesalesTask2ApplicationTests {
 		public void test_getExpressionsResult() throws URISyntaxException, ExecutionException, InterruptedException {
 			int testDataSize=0,i;
 			String encodedExpression;
-			String[] testData=new String[]{"(5*4)/0", "sqrt(3*3+4*4)", "25^2", "21*12*53*44","1231+5883+482*3+21^4"};
-			String[] results=new String[]{"Infinity", "5", "625", "5.87664e+5", "2.03041e+5"};
+			String[] testData=new String[]{"(5*4)/0", "sqrt(3*3+4*4)", "25^2", "21*12*53*44","1231+5883+482*3+21^4","(1+1"};
+			String[] results=new String[]{"Infinity", "5", "625", "5.87664e+5", "2.03041e+5", "message from API: 400 Bad Request: \"Error: Parenthesis ) expected (char 5)\""};
 			testDataSize=testData.length;
 			String[] encodedTestData=new String[testDataSize];
 			ExecutorService executorService= Executors.newFixedThreadPool(10);

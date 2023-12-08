@@ -12,4 +12,8 @@ ii) go to /src/main/java/com/example/OnlinesalesTask2/OnlinesalesTask2Applicatio
 iii) Once the application is running make a GET request to http://localhost:8080/api/v1/execute from Postman or any other tool
 iv) The output of 500 dataset will be printed on the terminal
 
+Instructions to run the unit tests:
+i) Run the /src/test/java/com/example/OnlinesalesTask2/OnlinesalesTask2ApplicationTests.java
+
+
 
